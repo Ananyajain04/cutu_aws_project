@@ -1,8 +1,9 @@
 // authService.js
-const API_URL = "http://localhost:4000/api/auth";
+const API = import.meta.env.API_URL;
+const API_URL = `${API}/api/auth`;
 
 export async function signup(fullName, dob, email, password) {
-  const res = await fetch("http://localhost:4000/api/auth/signup", {
+  const res = await fetch(`{API}/api/auth/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ fullName, dob, email, password }),
