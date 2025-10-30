@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Leaderboard = require("../models/Leaderboard");
+const Leaderboard = require("../models/leaderboard");
 const authMiddleware = require("../middleware/auth");
 
 // POST score for a guessed word
