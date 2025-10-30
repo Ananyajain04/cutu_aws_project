@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-
+const API = import.meta.env.API_URL;
 export default function Leaderboard({ word, onClose, theme }) {
   const [scores, setScores] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/leaderboard/${word}`)
+    fetch(`${API}/api/leaderboard/${word}`)
       .then((res) => res.json())
       .then(setScores);
   }, [word]);

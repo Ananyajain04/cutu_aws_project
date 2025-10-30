@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { themes } from "../assets/themes";
 import { useEffect, useState } from "react";
-
+const API = import.meta.env.API_URL;
 const Navbar = ({
   theme,
   selectTheme,
@@ -24,7 +24,7 @@ const Navbar = ({
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        const res = await fetch("http://localhost:4000/api/user/me", {
+        const res = await fetch(`${API}/api/user/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

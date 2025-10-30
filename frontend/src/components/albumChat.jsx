@@ -1,8 +1,9 @@
 // src/components/AlbumChat.jsx
 import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
+const API = import.meta.env.API_URL;
 
-const socket = io("http://localhost:4000");
+const socket = io(`${API}`);
 
 export default function AlbumChat({ album, onClose, theme }) {
   const [messages, setMessages] = useState([]);
@@ -29,7 +30,7 @@ export default function AlbumChat({ album, onClose, theme }) {
         const token = localStorage.getItem("token");
         if (!token) return;
   
-        const res = await fetch("http://localhost:4000/api/user/me", {
+        const res = await fetch(`${API}/api/user/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
   
@@ -54,7 +55,7 @@ export default function AlbumChat({ album, onClose, theme }) {
       const token = localStorage.getItem("token");
       if (!token) return;
       try {
-        const res = await fetch(`http://localhost:4000/api/messages/${album}`, {
+        const res = await fetch(`${API}/api/messages/${album}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) return;
@@ -85,7 +86,7 @@ export default function AlbumChat({ album, onClose, theme }) {
     const token = localStorage.getItem("token");
     if (!token) return;
     try {
-      const res = await fetch("http://localhost:4000/api/messages", {
+      const res = await fetch(`${API}/api/messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
